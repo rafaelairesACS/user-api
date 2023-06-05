@@ -36,5 +36,4 @@ public class UserDTO	{
         userDTO.setDataCadastro(user.getDataCadastro());
         return	userDTO;
     }
-
 }

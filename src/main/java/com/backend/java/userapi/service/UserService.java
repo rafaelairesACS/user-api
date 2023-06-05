@@ -3,6 +3,7 @@ package com.backend.java.userapi.service;
 import com.backend.java.userapi.dto.UserDTO;
 import com.backend.java.userapi.model.User;
 import com.backend.java.userapi.repository.UserRepository;
+import com.santana.java.back.end.exceptions.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -48,7 +49,7 @@ public class UserService {
     public UserDTO findByCpf(String cpf) {
         User user = userRepository.findByCpf(cpf);
         if (user != null) {
-            return UserDTO.convert(user);
+            throw new UserNotFoundException();
         }
         return null;
     }
