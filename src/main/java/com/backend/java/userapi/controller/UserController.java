@@ -42,6 +42,12 @@ public class UserController {
 //        return userService.findByCpf(cpf, key);
 //    }
 
+    @GetMapping("/{cpf}/cpf")
+    public UserDTO findByCpf(@RequestParam(name = "key",required = true) String key,
+                             @PathVariable String cpf){
+        return userService.findByCpfAndKey(cpf,key);
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) throws UserPrincipalNotFoundException {

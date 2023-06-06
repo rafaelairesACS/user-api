@@ -1,5 +1,6 @@
 package com.backend.java.userapi.service;
 
+import com.backend.java.userapi.dto.DTOConverter;
 import com.backend.java.userapi.dto.UserDTO;
 import com.backend.java.userapi.model.User;
 import com.backend.java.userapi.repository.UserRepository;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,6 +36,7 @@ public class UserService {
     }
 
     public UserDTO save(UserDTO userDTO) {
+        userDTO.setKey(UUID.randomUUID().toString());
         userDTO.setDataCadastro(LocalDateTime.now());
         User user = userRepository.save(User.convert(userDTO));
         return UserDTO.convert(user);
@@ -46,12 +49,12 @@ public class UserService {
         return UserDTO.convert(user);
     }
 
-    public UserDTO findByCpf(String cpf) {
-        User user = userRepository.findByCpf(cpf);
+    public UserDTO findByCpfAndKey(String cpf, String key) {
+        User user = userRepository.findByCpfAndKey(cpf,key);
         if (user != null) {
-            throw new UserNotFoundException();
+            return DTOConverter.convert(user);
         }
-        return null;
+        throw new UserNotFoundException();
     }
 
     public List<UserDTO> queryByName(String name) {

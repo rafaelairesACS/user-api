@@ -20,6 +20,7 @@ public class UserDTO	{
     @NotBlank(message = "Campo obrigatorio")
     private	String cpf;
     private	String endereco;
+    private String key;
     @NotBlank(message = "Campo obrigatorio")
     private	String email;
     private	String telefone;
@@ -34,6 +35,7 @@ public class UserDTO	{
         userDTO.setEmail(user.getEmail());
         userDTO.setTelefone(user.getTelefone());
         userDTO.setDataCadastro(user.getDataCadastro());
+        userDTO.setKey(user.getKey());
         return	userDTO;
     }
 }
