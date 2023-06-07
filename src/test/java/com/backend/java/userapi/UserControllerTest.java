@@ -13,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -50,7 +49,7 @@ public class UserControllerTest {
                 .andReturn();
         String resp = result.getResponse().getContentAsString();
         Assertions.assertEquals("[{\"nome\":\"Nome	1\"," +
-                        "\"cpf\":\"123\",\"endereco\":\"endereco\",\"key\":nu ll, " +
+                        "\"cpf\":\"123\",\"endereco\":\"endereco\",\"key\":null," +
                 "\"email\":null,\"telefone\":\"5432\",\"dataCadastro\":null}]",resp);
     }
 }
